@@ -241,7 +241,8 @@ const getData = (): { [key: string]: FinalConfig } => ({
       "inputs-optional.gql",
       "inputs-mixed.gql",
       "inputs-multiple.gql",
-      "lists.gql"
+      "lists.gql",
+      "big.gql"
     ]
   })
 });

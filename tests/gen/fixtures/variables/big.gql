@@ -1,0 +1,3 @@
+query Big($inputs: BigInput) {
+  big(inputs: $inputs)
+}

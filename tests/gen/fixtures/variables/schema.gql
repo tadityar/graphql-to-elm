@@ -21,6 +21,8 @@ type Query {
 
   inputsMultiple(inputs: Inputs!, inputs2: Inputs): String
 
+  big(inputs: BigInput): String
+
   lists(
     ints: [Int!]
     floats: [Float]
@@ -49,4 +51,19 @@ input MixedInputs {
 
 input OtherInputs {
   string: String!
+}
+
+input BigInput {
+  field1: Int!
+  field2: Int!
+  field3: Int!
+  field4: Int!
+  field5: Int!
+  field6: Int!
+  field7: Int!
+  field8: Int!
+  field9: Int!
+  field10: Int!
+  field11: Int!
+  field12: Int!
 }
