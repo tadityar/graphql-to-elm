@@ -161,6 +161,29 @@ const generateImports = (intel: ElmIntel): string => {
       });
     }
 
+    if (operation.variablesDecoder) {
+      visitDecoders(operation.variablesDecoder, {
+        value: (decoder: ElmValueDecoder) => {
+          addImportOf(decoder.type);
+          addImportOf(decoder.decoder);
+        },
+        constantString: (decoder: ElmConstantStringDecoder) => {
+          addImport("GraphQL.Helpers.Decode");
+        },
+        record: (decoder: ElmRecordDecoder) => {
+          decoder.fields.map(addWrapperImports);
+          if (decoder.fields.length > 8) {
+            addImport("GraphQL.Helpers.Decode");
+          }
+        },
+        union: (decoder: ElmUnionDecoder) => {},
+        unionOn: (decoder: ElmUnionOnDecoder) => {},
+        empty: (decoder: ElmEmptyDecoder) => {
+          addImportOf(decoder.decoder);
+        }
+      });
+    }
+
     visitDecoders(operation.data, {
       value: (decoder: ElmValueDecoder) => {
         addImportOf(decoder.type);
